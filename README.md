@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# O Custo de Vida do Brasileiro
 
-## Getting Started
+Dashboard interativo que cruza 8 indicadores econômicos brasileiros dos últimos 20 anos, com dados oficiais do Banco Central, DIEESE e ANP.
 
-First, run the development server:
+**[Ver dashboard ao vivo →](https://calmai.pages.dev)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![CI](https://github.com/bfreis1/calmai/actions/workflows/ci.yml/badge.svg)
+![Data Update](https://github.com/bfreis1/calmai/actions/workflows/update-data.yml/badge.svg)
+
+![Screenshot do dashboard](./docs/screenshot.png)
+
+## Sobre
+
+Este projeto nasceu de uma pergunta simples: **quanto o dinheiro do brasileiro perdeu de valor em 20 anos?**
+
+A resposta está nos dados. O dashboard cruza Selic, IPCA, dólar, salário mínimo, cesta básica, gasolina, endividamento das famílias e inadimplência — todos extraídos automaticamente de APIs públicas — e apresenta a evolução com filtros por período de governo.
+
+Os dados são atualizados semanalmente via pipeline automatizado.
+
+## Indicadores
+
+| Indicador | Fonte | Série | Período |
+|-----------|-------|-------|---------|
+| Taxa Selic (meta) | Banco Central — API SGS | 432 | 2005–presente |
+| IPCA acumulado 12 meses | Banco Central — API SGS | 13522 | 2005–presente |
+| Dólar comercial (compra) | Banco Central — API SGS | 3698 | 2005–presente |
+| Salário Mínimo | Banco Central — API SGS | 1619 | 2005–presente |
+| Endividamento das famílias | Banco Central — API SGS | 29037 | 2005–presente |
+| Inadimplência | Banco Central — API SGS | 21082 | 2011–presente |
+| Cesta básica (São Paulo) | DIEESE | Web scraping | 2005–presente |
+| Gasolina (média nacional) | ANP | CSV série histórica | 2005–presente |
+
+## Arquitetura
+
+O projeto tem duas partes independentes:
+
+**Pipeline ETL (Python)** — Coleta dados de 3 fontes, normaliza e exporta como JSON.
+
+**Dashboard (Next.js)** — Consome os JSONs e renderiza visualizações interativas.
+
+Não existe backend rodando. O site inteiro é HTML estático servido pelo Cloudflare Pages.
+
+```
+Fontes (BCB, DIEESE, ANP)
+        ↓
+Pipeline Python (extração → transformação → exportação)
+        ↓
+Arquivos JSON estáticos (src/data/)
+        ↓
+Next.js SSG (build estático)
+        ↓
+Cloudflare Pages (CDN global)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Pipeline:** Python 3.11 · Pandas · Requests · BeautifulSoup4 · Pytest
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Dashboard:** Next.js 14 · TypeScript · Tailwind CSS · Recharts · Vitest
 
-## Learn More
+**Infra:** GitHub Actions · Cloudflare Pages
 
-To learn more about Next.js, take a look at the following resources:
+## Rodando localmente
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Pré-requisitos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Python 3.11+
+- Node.js 20+
+- npm 10+
 
-## Deploy on Vercel
+### Pipeline (dados)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+cd pipeline
+pip install -r requirements.txt
+python main.py
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Dashboard
+
+```bash
+npm install
+npm run dev
+```
+
+Acesse `http://localhost:3000`
+
+### Testes
+
+```bash
+# Pipeline
+cd pipeline && pytest -v
+
+# Dashboard
+npm test
+```
+
+### Build de produção
+
+```bash
+npm run build
+npx serve out
+```
+
+## Pipeline ETL
+
+O pipeline segue o padrão Extract → Transform → Load:
+
+**Extract:** Cada fonte tem um extrator dedicado (`bcb.py`, `dieese.py`, `anp.py`). O extrator do BCB consulta a API SGS com retry automático. O do DIEESE faz scraping de tabela HTML. O da ANP parseia CSVs de séries históricas.
+
+**Transform:** O normalizador padroniza datas (YYYY-MM), converte tipos numéricos, remove duplicatas, filtra pelo período configurado e agrega dados diários em médias mensais.
+
+**Load:** O exportador gera 3 arquivos JSON (`indicators.json`, `governments.json`, `metadata.json`) otimizados pro consumo do frontend.
+
+O pipeline roda automaticamente toda segunda via GitHub Actions. Se os dados mudaram, commita e faz deploy.
+
+## Deploy
+
+O deploy é feito automaticamente pelo GitHub Actions via Cloudflare Pages.
+
+### Setup do Cloudflare Pages
+
+1. Criar projeto `custo-de-vida-brasil` no dashboard do Cloudflare Pages
+2. Adicionar custom domain (opcional)
+3. Configurar secrets no GitHub (Settings → Secrets → Actions):
+   - `CLOUDFLARE_API_TOKEN` — token de API com permissão de Cloudflare Pages
+   - `CLOUDFLARE_ACCOUNT_ID` — ID da conta Cloudflare
+
+## Contribuindo
+
+Issues e PRs são bem-vindos. Se encontrou um dado errado ou tem sugestão de novo indicador, abre uma issue.
+
+## Licença
+
+[MIT](LICENSE)

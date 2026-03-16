@@ -30,9 +30,10 @@ const HookCard = () => {
       }}
     >
       <p
+        className="font-ui"
         style={{
           fontSize: "36px",
-          fontWeight: 500,
+          fontWeight: 600,
           lineHeight: 1.2,
           marginBottom: "12px",
         }}

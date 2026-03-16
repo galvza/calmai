@@ -118,6 +118,7 @@ const EconomicTimeline = () => {
             }}
           >
             <p
+              className="font-ui"
               style={{
                 fontSize: "11px",
                 textTransform: "uppercase",
@@ -149,7 +150,7 @@ const EconomicTimeline = () => {
             >
               {event.body}
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            <div className="font-ui" style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
               {event.badges.map((badge) => (
                 <span
                   key={badge}

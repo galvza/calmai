@@ -153,6 +153,7 @@ const Timeline = () => {
                   }}
                 />
                 <p
+                  className="font-ui"
                   style={{
                     fontSize: "11px",
                     textTransform: "uppercase",
@@ -188,6 +189,7 @@ const Timeline = () => {
                   {event.badges.map((badge) => (
                     <span
                       key={badge}
+                      className="font-ui"
                       style={{
                         fontSize: "11px",
                         padding: "2px 8px",
@@ -210,6 +212,7 @@ const Timeline = () => {
       {!expanded && (
         <button
           onClick={() => setExpanded(true)}
+          className="font-ui"
           style={{
             display: "block",
             width: "100%",

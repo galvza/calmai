@@ -43,6 +43,7 @@ const RentTooltip = ({ active, payload, label }: TooltipProps) => {
 
   return (
     <div
+      className="font-ui"
       style={{
         background: "white",
         border: "1px solid var(--border)",
@@ -195,6 +196,7 @@ const RentCorrelationChart = () => {
             </ResponsiveContainer>
           </div>
           <div
+            className="font-ui"
             style={{
               display: "flex",
               justifyContent: "center",
@@ -233,6 +235,7 @@ const RentCorrelationChart = () => {
             </div>
           </div>
           <p
+            className="font-ui"
             style={{
               fontSize: "11px",
               color: "var(--text-tertiary)",
@@ -246,6 +249,7 @@ const RentCorrelationChart = () => {
         </>
       ) : (
         <p
+          className="font-ui"
           style={{
             fontSize: "13px",
             color: "var(--text-tertiary)",

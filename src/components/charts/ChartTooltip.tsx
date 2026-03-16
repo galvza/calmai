@@ -44,6 +44,7 @@ const ChartTooltip = ({ active, payload, label }: ChartTooltipProps) => {
 
   return (
     <div
+      className="font-ui"
       style={{
         background: "white",
         border: "1px solid var(--border)",

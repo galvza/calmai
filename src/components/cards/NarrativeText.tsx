@@ -1,7 +1,7 @@
 /**
  * Wrapper de parágrafo narrativo com estilização editorial.
  *
- * Aplica tipografia de corpo de texto (15px, line-height 1.7)
+ * Aplica tipografia serif de corpo de texto (16px, line-height 1.8)
  * com <strong> em cor primária pra destaques.
  */
 
@@ -11,8 +11,6 @@ const NarrativeText = ({ children }: { children: React.ReactNode }) => {
     <div
       className="narrative-text"
       style={{
-        fontSize: "15px",
-        lineHeight: 1.7,
         color: "var(--text-secondary)",
       }}
     >

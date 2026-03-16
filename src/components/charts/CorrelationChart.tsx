@@ -35,6 +35,7 @@ const CorrelationTooltip = ({ active, payload, label }: TooltipProps) => {
   if (!active || !payload || !label) return null;
   return (
     <div
+      className="font-ui"
       style={{
         background: "white",
         border: "1px solid var(--border)",
@@ -164,6 +165,7 @@ const CorrelationChart = () => {
       </div>
       {/* Custom legend below chart */}
       <div
+        className="font-ui"
         style={{
           display: "flex",
           justifyContent: "center",

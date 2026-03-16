@@ -21,7 +21,7 @@ const ChartSection = () => {
   return (
     <div>
       <p
-        className="mb-4"
+        className="mb-4 font-ui"
         style={{
           fontSize: "13px",
           lineHeight: 1.6,

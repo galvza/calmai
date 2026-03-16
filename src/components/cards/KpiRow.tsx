@@ -60,7 +60,7 @@ const KpiRow = () => {
 
   return (
     <div
-      className="mb-8"
+      className="mb-8 font-ui"
       style={{
         border: "1px solid var(--border)",
         borderRadius: "8px",

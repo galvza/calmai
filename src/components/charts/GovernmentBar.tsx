@@ -56,6 +56,7 @@ const GovernmentBar = () => {
       </div>
 
       <div
+        className="font-ui"
         style={{
           display: "flex",
           flexWrap: "wrap",

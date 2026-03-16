@@ -47,7 +47,7 @@ const ComparisonStrip = ({ indicator, label }: ComparisonStripProps) => {
 
   return (
     <div
-      className="grid grid-cols-[1fr_auto_1fr]"
+      className="grid grid-cols-[1fr_auto_1fr] font-ui"
       style={{
         border: "1px solid var(--border)",
         borderRadius: "8px",

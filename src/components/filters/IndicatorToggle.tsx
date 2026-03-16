@@ -45,7 +45,7 @@ const IndicatorToggle = ({
   onToggle,
 }: IndicatorToggleProps) => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <div className="font-ui" style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
       {CATEGORIES.map((cat) => (
         <div key={cat.label} style={{ display: "flex", flexWrap: "wrap", gap: "6px", alignItems: "center" }}>
           <span

@@ -9,7 +9,7 @@
 const Footer = () => {
   return (
     <footer
-      className="py-8 mt-12"
+      className="py-8 mt-12 font-ui"
       style={{ borderTop: "1px solid var(--border)" }}
     >
       <div

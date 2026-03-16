@@ -35,10 +35,7 @@ const PullQuote = () => {
       <p
         className="text-[15px] sm:text-base"
         style={{
-          fontFamily: "Georgia, 'Times New Roman', serif",
-          lineHeight: 1.65,
           color: "var(--text-primary)",
-          fontStyle: "italic",
         }}
       >
         Em 2005, um salário mínimo comprava{" "}
@@ -50,6 +47,7 @@ const PullQuote = () => {
         que eles não mostram é o que ficou mais caro sem ninguém medir direito.
       </p>
       <p
+        className="font-ui"
         style={{
           fontSize: "11px",
           color: "var(--text-tertiary)",

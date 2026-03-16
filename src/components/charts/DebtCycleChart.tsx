@@ -42,6 +42,7 @@ const DebtTooltip = ({ active, payload, label }: TooltipProps) => {
 
   return (
     <div
+      className="font-ui"
       style={{
         background: "white",
         border: "1px solid var(--border)",
@@ -222,6 +223,7 @@ const DebtCycleChart = () => {
       </div>
       {/* Custom legend below chart */}
       <div
+        className="font-ui"
         style={{
           display: "flex",
           justifyContent: "center",
@@ -263,6 +265,7 @@ const DebtCycleChart = () => {
         </div>
       </div>
       <p
+        className="font-ui"
         style={{
           fontSize: "11px",
           color: "var(--text-tertiary)",

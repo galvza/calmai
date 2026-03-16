@@ -32,7 +32,7 @@ const CtaBox = () => {
         href="https://github.com/galvza/calmai"
         target="_blank"
         rel="noopener noreferrer"
-        className="cta-link"
+        className="cta-link font-ui"
         style={{
           display: "inline-block",
           padding: "10px 24px",

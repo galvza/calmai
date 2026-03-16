@@ -23,7 +23,7 @@ const Section = ({ chapterNumber, title, children }: SectionProps) => {
     >
       {chapterNumber != null && (
         <p
-          className="mb-2"
+          className="mb-2 font-ui"
           style={{
             fontSize: "11px",
             color: "var(--text-tertiary)",
@@ -35,14 +35,7 @@ const Section = ({ chapterNumber, title, children }: SectionProps) => {
         </p>
       )}
 
-      <h2
-        className="mb-6"
-        style={{
-          fontSize: "18px",
-          fontWeight: 500,
-          lineHeight: 1.3,
-        }}
-      >
+      <h2 className="mb-6">
         {title}
       </h2>
 

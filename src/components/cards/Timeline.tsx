@@ -29,8 +29,8 @@ const EVENTS: TimelineEvent[] = [
     date: "Abril 2008",
     type: "growth",
     title: "Brasil vira investment grade",
-    body: "As agências de risco olharam pro Brasil e disseram: 'confiamos'. O país ganhou grau de investimento pela primeira vez. O dólar caiu pra R$ 1,59 em julho — o menor valor do ano. Euforia total. Durou cinco meses.",
-    badges: ["Dólar mínimo: R$ 1,59", "Rating: BBB-"],
+    body: "A S&P olhou pro Brasil e disse: 'confiamos'. Em 30 de abril, o país ganhou grau de investimento pela primeira vez. A Fitch veio logo depois. O dólar bateu R$ 1,59 — menor valor em anos.",
+    badges: ["Dólar mínimo: R$ 1,59", "Rating: BBB- (S&P, abr/2008)"],
   },
   {
     date: "Setembro 2008",

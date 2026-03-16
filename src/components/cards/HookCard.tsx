@@ -51,7 +51,16 @@ const HookCard = () => {
         a gaveta — essa nota compra hoje o que R$ {valorCorrigido} compravam
         naquela época. A inflação acumulada no período?{" "}
         {formatDecimal(ipcaAcumulado, 0)}%. O salário subiu? O dólar explodiu?
-        A gasolina... bom, a gasolina é uma história à parte. Desce a página.
+        A gasolina... bom, a gasolina é uma história à parte.{" "}
+        <a
+          href="#capitulo-1"
+          style={{
+            textDecoration: "underline",
+            textDecorationStyle: "dotted",
+          }}
+        >
+          Desce a página ↓
+        </a>
       </p>
     </div>
   );

@@ -10,14 +10,17 @@ type SectionProps = {
   chapterNumber?: number;
   /** Título da seção. */
   title: string;
+  /** ID para âncora (opcional). */
+  id?: string;
   /** Conteúdo da seção. */
   children: React.ReactNode;
 };
 
 /** Seção narrativa com separador, título e conteúdo. */
-const Section = ({ chapterNumber, title, children }: SectionProps) => {
+const Section = ({ chapterNumber, title, id, children }: SectionProps) => {
   return (
     <section
+      id={id}
       className="py-8"
       style={{ borderTop: "1px solid var(--border)" }}
     >

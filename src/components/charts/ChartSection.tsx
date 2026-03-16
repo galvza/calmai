@@ -54,9 +54,8 @@ const ChartSection = () => {
           lineHeight: 1.5,
         }}
       >
-        Valores normalizados (base 100 = início da série) pra permitir comparação visual.
-        PIB = índice trimestral dessazonalizado (BCB); tooltip mostra crescimento acumulado desde 2005.
-        Aluguel e energia = variações mensais compostas em índice acumulado.
+        Todas as linhas partem do mesmo ponto pra facilitar a comparação.
+        O PIB mostra o crescimento acumulado desde 2005. Aluguel e energia mostram quanto o preço subiu mês a mês, somado ao longo do tempo.
       </p>
     </div>
   );

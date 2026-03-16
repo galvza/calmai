@@ -11,6 +11,7 @@ import PullQuote from "@/components/cards/PullQuote";
 import InsightGrid from "@/components/cards/InsightGrid";
 import HousingInsightCards from "@/components/cards/HousingInsightCards";
 import CtaBox from "@/components/cards/CtaBox";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 import ChartSection from "@/components/charts/ChartSection";
 import CorrelationChart from "@/components/charts/CorrelationChart";
 import RentCorrelationChart from "@/components/charts/RentCorrelationChart";
@@ -23,7 +24,7 @@ export default function Home() {
       <HookCard />
       <KpiRow />
 
-      <Section chapterNumber={1} title="A fotografia — de lá pra cá">
+      <Section chapterNumber={1} title="A fotografia — de lá pra cá" id="capitulo-1">
         <ComparisonStrip indicator="salarioMinimo" label="Salário mínimo" />
         <div className="mt-6">
           <SalaryNarrative />
@@ -91,6 +92,7 @@ export default function Home() {
 
       <CtaBox />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }

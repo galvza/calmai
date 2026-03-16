@@ -21,6 +21,9 @@ export const metadata: Metadata = {
       "12 indicadores econômicos brasileiros de 2005 a 2025. Dados oficiais do BCB, DIEESE, ANP, IBGE e FIPE. Interativo e open source.",
     images: ["/og-image.png"],
   },
+  alternates: {
+    canonical: "https://calmai.pages.dev",
+  },
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>",
   },

@@ -12,6 +12,7 @@ import {
   formatPercent,
   formatDollar,
   formatCurrency,
+  formatDateShort,
 } from "@/utils/formatters";
 
 /** Linha de 3 KPIs: Selic, Dólar e Cesta Básica. */
@@ -22,9 +23,12 @@ const KpiRow = () => {
   const dolar = data.dolar ?? [];
   const cesta = data.cestaBasica ?? [];
 
+  const lastDate = (series: typeof selic) =>
+    series.length > 0 ? formatDateShort(series[series.length - 1].date).toLowerCase() : "";
+
   const kpis = [
     {
-      label: "Selic hoje",
+      label: selic.length > 0 ? `Selic (${lastDate(selic)})` : "Selic",
       current:
         selic.length > 0
           ? formatPercent(selic[selic.length - 1].value)
@@ -35,7 +39,7 @@ const KpiRow = () => {
       year: selic[0]?.date.split("-")[0] ?? "2005",
     },
     {
-      label: "Dólar hoje",
+      label: dolar.length > 0 ? `Dólar (${lastDate(dolar)})` : "Dólar",
       current:
         dolar.length > 0
           ? formatDollar(dolar[dolar.length - 1].value)
@@ -46,7 +50,7 @@ const KpiRow = () => {
       year: dolar[0]?.date.split("-")[0] ?? "2005",
     },
     {
-      label: "Cesta básica SP",
+      label: cesta.length > 0 ? `Cesta básica SP (${lastDate(cesta)})` : "Cesta básica SP",
       current:
         cesta.length > 0
           ? formatCurrency(cesta[cesta.length - 1].value)

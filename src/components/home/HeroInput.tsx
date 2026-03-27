@@ -1,0 +1,142 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Store, ShoppingCart, Link as LinkIcon, ArrowRight } from "lucide-react";
+import { useRotatingPlaceholder } from "@/hooks/useRotatingPlaceholder";
+import { InlineTip, detectTipType } from "./InlineTip";
+
+const HELPER_CHIPS = [
+  { icon: Store, label: "Negócio local" },
+  { icon: ShoppingCart, label: "E-commerce" },
+  { icon: LinkIcon, label: "Tenho URL" },
+];
+
+/** Input principal do hero com textarea, chips, modo toggle e dica inline */
+export const HeroInput = () => {
+  const [query, setQuery] = useState("");
+  const [mode, setMode] = useState<"rapido" | "completo">("rapido");
+  const [url, setUrl] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { placeholder, visible } = useRotatingPlaceholder();
+  const router = useRouter();
+
+  const tipType = detectTipType(query);
+
+  const handleSubmit = async () => {
+    if (!query.trim() && !url.trim()) return;
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: query.trim(),
+          url: mode === "completo" ? url.trim() : undefined,
+          mode,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Erro ao iniciar análise");
+      const data = await res.json();
+      router.push(`/analysis/${data.id}`);
+    } catch {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChipClick = (label: string) => {
+    if (label === "Tenho URL") {
+      setMode("completo");
+    } else {
+      setQuery((prev) => (prev ? `${prev} — ${label.toLowerCase()}` : label.toLowerCase()));
+    }
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto w-full">
+      {/* Textarea */}
+      <div className="relative bg-[#1A1A1A] border border-[#333] rounded-xl p-4 focus-within:border-accent/40 transition-colors">
+        <textarea
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={visible ? placeholder : ""}
+          rows={3}
+          className="w-full bg-transparent text-white text-[15px] placeholder:text-[#555] resize-none outline-none leading-relaxed"
+          style={{
+            transition: "opacity 0.3s ease",
+          }}
+        />
+        <button
+          onClick={handleSubmit}
+          disabled={isSubmitting || (!query.trim() && !url.trim())}
+          className="absolute bottom-4 right-4 bg-accent text-dark-bg text-sm font-semibold px-5 py-2 rounded-lg hover:brightness-110 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+        >
+          {isSubmitting ? "Analisando..." : "Analisar"}
+          {!isSubmitting && <ArrowRight size={14} strokeWidth={2} />}
+        </button>
+      </div>
+
+      {/* Inline tip */}
+      <InlineTip tipType={tipType} />
+
+      {/* Helper chips */}
+      <div className="flex flex-wrap gap-2 mt-4">
+        {HELPER_CHIPS.map(({ icon: Icon, label }) => (
+          <button
+            key={label}
+            onClick={() => handleChipClick(label)}
+            className="inline-flex items-center gap-1.5 bg-[#1F1F1F] border border-[#333] text-[#555] text-[12px] px-3 py-1.5 rounded-full hover:border-[#444] hover:text-[#888] transition-all"
+          >
+            <Icon size={12} strokeWidth={1.5} />
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* Mode toggle */}
+      <div className="flex items-center gap-3 mt-4">
+        <button
+          onClick={() => setMode("rapido")}
+          className={`text-[12px] px-3 py-1 rounded-full transition-all ${
+            mode === "rapido"
+              ? "bg-[#1A1A1A] text-accent border border-accent/30"
+              : "text-[#555] hover:text-[#888]"
+          }`}
+        >
+          Modo Rápido
+        </button>
+        <span className="text-[#333] text-[12px]">|</span>
+        <button
+          onClick={() => setMode("completo")}
+          className={`text-[12px] px-3 py-1 rounded-full transition-all ${
+            mode === "completo"
+              ? "bg-[#1A1A1A] text-accent border border-accent/30"
+              : "text-[#555] hover:text-[#888]"
+          }`}
+        >
+          Modo Completo
+        </button>
+      </div>
+
+      {/* URL input for Modo Completo */}
+      {mode === "completo" && (
+        <div className="mt-3">
+          <input
+            type="url"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="URL do seu site (opcional)"
+            className="w-full bg-[#1A1A1A] border border-[#333] rounded-lg px-4 py-2.5 text-white text-[13px] placeholder:text-[#555] outline-none focus:border-accent/40 transition-colors"
+          />
+        </div>
+      )}
+
+      {/* Trust line */}
+      <p className="text-center text-[12px] text-[#555] mt-6">
+        Sem login · Sem cartão · Resultado em minutos
+      </p>
+    </div>
+  );
+};

@@ -11,7 +11,7 @@ export const HeroSection = () => {
       id="hero"
       className="bg-dark-bg rounded-b-[32px] md:rounded-b-[48px] relative z-10"
     >
-      <div className="flex flex-col items-center px-8 lg:px-16 pt-24 md:pt-28 pb-10 md:pb-14">
+      <div className="flex flex-col items-center px-8 lg:px-16 pt-20 md:pt-28 pb-10 md:pb-14">
         <FirstTimeBanner />
 
         {/* Headline */}

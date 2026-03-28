@@ -6,6 +6,7 @@ import { FeaturesSection } from "@/components/home/FeaturesSection";
 import { PraQuemSection } from "@/components/home/PraQuemSection";
 import { CtaSection } from "@/components/home/CtaSection";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 
 /** Página inicial do LupAI */
 export default function HomePage() {
@@ -20,6 +21,7 @@ export default function HomePage() {
       <PraQuemSection />
       <CtaSection />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }

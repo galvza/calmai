@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 /** Mini preview card do dashboard */
@@ -43,12 +42,16 @@ export const CtaSection = () => {
             Sem login. Sem cartão. Sem setup. Descreve e vai.
           </p>
           <div className="mt-8">
-            <Link
-              href="/#hero"
-              className="inline-block bg-accent text-dark-bg text-[15px] font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition-all"
+            <button
+              onClick={() =>
+                document
+                  .getElementById("hero-input")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="bg-accent text-dark-bg text-[15px] font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition-all"
             >
               Analisar meu mercado agora
-            </Link>
+            </button>
           </div>
         </div>
 

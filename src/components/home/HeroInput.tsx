@@ -55,7 +55,7 @@ export const HeroInput = () => {
   };
 
   return (
-    <div className="w-full">
+    <div id="hero-input" className="w-full">
       {/* Textarea */}
       <div className="relative bg-[#1A1A1A] border border-[#333] rounded-xl p-4 focus-within:border-accent/40 transition-colors">
         <textarea

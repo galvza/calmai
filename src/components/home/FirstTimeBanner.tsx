@@ -27,7 +27,7 @@ export const FirstTimeBanner = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="max-w-2xl mx-auto mb-8 bg-[#1A1A1A] border border-[#222] rounded-xl px-5 py-4 flex items-start gap-3"
+          className="max-w-2xl mx-auto mb-10 bg-[#1A1A1A] border border-[#222] rounded-xl px-5 py-4 flex items-start gap-3"
         >
           <Search
             color="#C8FF3C"

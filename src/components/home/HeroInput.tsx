@@ -55,7 +55,7 @@ export const HeroInput = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto w-full">
+    <div className="w-full">
       {/* Textarea */}
       <div className="relative bg-[#1A1A1A] border border-[#333] rounded-xl p-4 focus-within:border-accent/40 transition-colors">
         <textarea
@@ -63,7 +63,7 @@ export const HeroInput = () => {
           onChange={(e) => setQuery(e.target.value)}
           placeholder={visible ? placeholder : ""}
           rows={3}
-          className="w-full bg-transparent text-white text-[15px] placeholder:text-[#555] resize-none outline-none leading-relaxed"
+          className="w-full bg-transparent text-white text-base md:text-lg placeholder:text-[#555] resize-none outline-none leading-relaxed"
           style={{
             transition: "opacity 0.3s ease",
           }}
@@ -82,7 +82,7 @@ export const HeroInput = () => {
       <InlineTip tipType={tipType} />
 
       {/* Helper chips */}
-      <div className="flex flex-wrap gap-2 mt-4">
+      <div className="flex flex-wrap gap-3 mt-4">
         {HELPER_CHIPS.map(({ icon: Icon, label }) => (
           <button
             key={label}

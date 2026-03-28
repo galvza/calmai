@@ -26,14 +26,14 @@ const STEPS = [
 /** Seção "Como funciona" com 3 passos */
 export const ComoFuncionaSection = () => {
   return (
-    <section id="como-funciona" className="bg-light-bg py-20 px-6">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="como-funciona" className="bg-light-bg py-20 lg:py-24 px-8 lg:px-16">
+      <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="font-serif text-[24px] sm:text-[28px] text-[#1A1A1A] mb-2"
+          className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] mb-3"
         >
           Quantas horas você ainda perde pesquisando{" "}
           <em className="italic">concorrente</em>?
@@ -43,7 +43,7 @@ export const ComoFuncionaSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-[13px] text-[#999] mb-14"
+          className="text-sm md:text-base text-[#999] mb-12 md:mb-16"
         >
           Três passos. Cinco minutos. Nenhum trabalho manual.
         </motion.p>

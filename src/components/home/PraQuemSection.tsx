@@ -19,14 +19,14 @@ const AUDIENCES = [
 /** Seção "Pra quem é" com cards de audiência */
 export const PraQuemSection = () => {
   return (
-    <section id="pra-quem" className="bg-light-bg py-20 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section id="pra-quem" className="bg-light-bg py-20 lg:py-24 px-8 lg:px-16">
+      <div className="max-w-5xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="font-serif text-[24px] sm:text-[28px] text-[#1A1A1A] text-center mb-12"
+          className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] text-center mb-12 md:mb-16"
         >
           Se você faz marketing, isso é{" "}
           <em className="italic">pra você</em>.

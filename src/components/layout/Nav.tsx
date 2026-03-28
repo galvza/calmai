@@ -6,7 +6,7 @@ import Link from "next/link";
 /** Barra de navegação global */
 export const Nav = () => {
   return (
-    <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
+    <nav className="w-full flex items-center justify-between px-8 lg:px-16 py-4">
       <Link href="/" className="flex items-center gap-2">
         <Search color="#C8FF3C" size={20} strokeWidth={1.5} />
         <span className="text-sm font-semibold tracking-wider text-white">
@@ -14,7 +14,7 @@ export const Nav = () => {
         </span>
       </Link>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-8">
         <a
           href="#como-funciona"
           className="hidden sm:block text-sm text-[#888] hover:text-white transition-colors"

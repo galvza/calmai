@@ -33,14 +33,14 @@ const FEATURES = [
 /** Seção de features — grid 2x2 */
 export const FeaturesSection = () => {
   return (
-    <section className="bg-light-bg py-16 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-light-bg py-20 lg:py-24 px-8 lg:px-16">
+      <div className="max-w-5xl mx-auto">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-[11px] text-[#999] uppercase tracking-widest text-center mb-12"
+          className="text-xs md:text-sm text-[#999] uppercase tracking-widest text-center mb-12 md:mb-16"
         >
           O QUE O LUPAI ENTREGA
         </motion.p>

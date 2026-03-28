@@ -8,13 +8,11 @@ import { HeroInput } from "./HeroInput";
 /** Seção hero com headline, input e banner */
 export const HeroSection = () => {
   return (
-    <section id="hero" className="bg-dark-bg">
+    <section id="hero" className="bg-dark-bg border-b border-[#1A1A1A]">
       <Nav />
 
-      <div className="flex flex-col items-center px-8 lg:px-16 pt-24 md:pt-32 pb-16 md:pb-20">
-        <div className="mt-6">
-          <FirstTimeBanner />
-        </div>
+      <div className="flex flex-col items-center px-8 lg:px-16 pt-16 md:pt-20 pb-16 md:pb-20">
+        <FirstTimeBanner />
 
         {/* Headline */}
         <motion.h1
@@ -32,7 +30,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="text-sm md:text-base lg:text-lg text-[#888] text-center max-w-xl mb-12 md:mb-16 leading-relaxed"
+          className="text-sm md:text-base lg:text-lg text-[#888] text-center max-w-xl mb-10 md:mb-12 leading-relaxed"
         >
           Descreva seu nicho e receba análise competitiva, conteúdos virais e
           recomendações estratégicas — em minutos.

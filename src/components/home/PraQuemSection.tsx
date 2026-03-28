@@ -44,7 +44,7 @@ export const PraQuemSection = () => {
               className="bg-light-card border border-light-border rounded-xl p-6"
             >
               <div className="flex items-center gap-3 mb-4">
-                <Icon color="#C8FF3C" size={20} strokeWidth={1.5} />
+                <Icon color="#1A1A1A" size={20} strokeWidth={1.5} />
                 <h3 className="text-[14px] font-semibold text-[#1A1A1A]">
                   {title}
                 </h3>

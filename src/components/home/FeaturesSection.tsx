@@ -33,19 +33,22 @@ const FEATURES = [
 /** Seção de features — grid 2x2 */
 export const FeaturesSection = () => {
   return (
-    <section className="bg-light-bg py-20 lg:py-24 px-8 lg:px-16">
+    <section className="bg-light-bg py-20 lg:py-24 px-8 lg:px-16 border-t border-[#E8E8E4]">
       <div className="max-w-5xl mx-auto">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-xs md:text-sm text-[#999] uppercase tracking-widest text-center mb-12 md:mb-16"
+          className="text-center mb-16"
         >
-          O QUE O LUPAI ENTREGA
-        </motion.p>
+          <p className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-[3px] mb-4">
+            O QUE O LUPAI ENTREGA
+          </p>
+          <div className="w-10 h-0.5 bg-[#1A1A1A] mx-auto" />
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
           {FEATURES.map(({ icon: Icon, title, description }, i) => (
             <motion.div
               key={title}
@@ -56,13 +59,13 @@ export const FeaturesSection = () => {
               className="flex gap-4"
             >
               <div className="shrink-0 mt-1">
-                <Icon color="#C8FF3C" size={22} strokeWidth={1.5} />
+                <Icon color="#1A1A1A" size={22} strokeWidth={1.5} />
               </div>
               <div>
-                <h3 className="text-[14px] font-semibold text-[#1A1A1A] mb-1">
+                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-1.5">
                   {title}
                 </h3>
-                <p className="text-[12px] text-[#999] leading-relaxed">
+                <p className="text-sm text-[#999] leading-relaxed">
                   {description}
                 </p>
               </div>

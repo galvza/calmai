@@ -58,8 +58,8 @@ export const ComoFuncionaSection = () => {
               transition={{ duration: 0.4, delay: i * 0.15 }}
               className="flex flex-col items-center"
             >
-              <div className="w-12 h-12 rounded-full border-2 border-accent flex items-center justify-center mb-4">
-                <span className="text-accent font-semibold text-lg">
+              <div className="w-12 h-12 rounded-full border-2 border-[#1A1A1A] flex items-center justify-center mb-4">
+                <span className="text-[#1A1A1A] font-semibold text-lg">
                   {step.number}
                 </span>
               </div>

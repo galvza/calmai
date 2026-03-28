@@ -12,6 +12,7 @@ export default function HomePage() {
     <main>
       <HeroSection />
       <Marquee />
+      <div className="w-full h-px bg-[#E0DDD5]" />
       <ComoFuncionaSection />
       <FeaturesSection />
       <PraQuemSection />

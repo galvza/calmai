@@ -35,7 +35,7 @@ const MarqueeRow = ({ reverse = false }: { reverse?: boolean }) => {
 /** Marquee com duas linhas scrollando em direções opostas */
 export const Marquee = () => {
   return (
-    <div className="marquee-container py-10 space-y-4 select-none" aria-hidden="true">
+    <div className="marquee-container bg-light-bg py-10 space-y-4 select-none" aria-hidden="true">
       <div
         className="text-2xl md:text-3xl lg:text-4xl uppercase tracking-wide text-[#222222]"
         style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800 }}

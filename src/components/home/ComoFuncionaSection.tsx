@@ -26,7 +26,7 @@ const STEPS = [
 /** Seção "Como funciona" com 3 passos */
 export const ComoFuncionaSection = () => {
   return (
-    <section id="como-funciona" className="bg-light-bg py-20 lg:py-24 px-8 lg:px-16">
+    <section id="como-funciona" className="bg-light-card py-20 lg:py-24 px-8 lg:px-16">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}

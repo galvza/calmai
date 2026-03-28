@@ -19,7 +19,7 @@ const AUDIENCES = [
 /** Seção "Pra quem é" com cards de audiência */
 export const PraQuemSection = () => {
   return (
-    <section id="pra-quem" className="bg-light-bg py-20 lg:py-24 px-8 lg:px-16">
+    <section id="pra-quem" className="bg-light-card py-20 lg:py-24 px-8 lg:px-16">
       <div className="max-w-5xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}

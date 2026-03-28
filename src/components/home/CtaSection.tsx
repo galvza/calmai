@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useAnimationSafety } from "@/hooks/useAnimationSafety";
 
 /** Mini preview card do dashboard */
 const PreviewCard = ({
@@ -17,12 +18,15 @@ const PreviewCard = ({
 
 /** Seção CTA com layout split Krida-style */
 export const CtaSection = () => {
+  const forceVisible = useAnimationSafety(2000);
+
   return (
     <section id="cta" className="bg-light-bg py-16 md:py-20 px-8 lg:px-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
+        animate={forceVisible ? { opacity: 1, y: 0 } : undefined}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5 }}
         className="max-w-6xl mx-auto flex flex-col md:flex-row rounded-[24px] overflow-hidden"
       >
@@ -30,7 +34,7 @@ export const CtaSection = () => {
         <div
           className="md:w-[60%] p-10 md:p-12 lg:p-16 flex flex-col justify-center"
           style={{
-            background: "linear-gradient(135deg, #D4D0C8 0%, #B8B4AA 50%, #A09C94 100%)",
+            background: "linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%)",
           }}
         >
           <h2 className="font-serif text-3xl md:text-4xl text-white leading-tight">
@@ -38,7 +42,7 @@ export const CtaSection = () => {
             <em className="italic text-accent">minutos</em> de inteligência
             real.
           </h2>
-          <p className="text-[14px] text-[#E0E0E0] mt-4">
+          <p className="text-[14px] text-white/80 mt-4">
             Sem login. Sem cartão. Sem setup. Descreve e vai.
           </p>
           <div className="mt-8">
@@ -48,7 +52,7 @@ export const CtaSection = () => {
                   .getElementById("hero-input")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="bg-accent text-dark-bg text-[15px] font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition-all"
+              className="bg-accent text-dark-bg text-lg font-semibold px-8 py-4 rounded-lg hover:brightness-110 transition-all shadow-[0_0_20px_rgba(200,255,60,0.3)]"
             >
               Analisar meu mercado agora
             </button>
@@ -63,7 +67,9 @@ export const CtaSection = () => {
               <span className="text-[11px] font-medium text-white">
                 Growth Supplements
               </span>
-              <span className="text-[11px] font-semibold text-accent">87</span>
+              <span className="text-[11px] font-semibold text-accent">
+                <span className="text-[9px] font-normal opacity-60">Score </span>87<span className="text-[9px] font-normal opacity-60">/100</span>
+              </span>
             </div>
             <div className="flex gap-1.5">
               <span className="text-[9px] px-2 py-0.5 rounded-full bg-positive-bg text-positive-text">

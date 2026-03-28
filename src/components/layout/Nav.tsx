@@ -5,7 +5,7 @@ import { LupaiLogo } from "@/components/ui/LupaiLogo";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#hero" },
+  { label: "Início", href: "#hero" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "Pra quem é", href: "#pra-quem" },
 ];

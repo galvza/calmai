@@ -2,6 +2,7 @@
 
 import { Search, Play, TrendingUp, Target } from "lucide-react";
 import { motion } from "framer-motion";
+import { useAnimationSafety } from "@/hooks/useAnimationSafety";
 
 const FEATURES = [
   {
@@ -32,13 +33,16 @@ const FEATURES = [
 
 /** Seção de features — grid 2x2 */
 export const FeaturesSection = () => {
+  const forceVisible = useAnimationSafety(2000);
+
   return (
-    <section className="bg-light-card py-20 lg:py-24 px-8 lg:px-16">
+    <section id="features" className="bg-light-card py-16 md:py-20 px-8 lg:px-16">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
+          animate={forceVisible ? { opacity: 1 } : undefined}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
@@ -53,16 +57,20 @@ export const FeaturesSection = () => {
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 16 }}
+              animate={forceVisible ? { opacity: 1, y: 0 } : undefined}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0.1, margin: "-40px" }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="flex gap-4"
+              className={`flex gap-4 rounded-xl p-4 -m-4 ${i === 0 ? "border border-[#C8FF3C]/20" : ""}`}
             >
               <div className="shrink-0 mt-1">
                 <Icon color="#1A1A1A" size={22} strokeWidth={1.5} />
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-1.5">
+              <div className="flex-1">
+                <span className="text-[#C8FF3C] text-xs font-mono opacity-60 block mb-1">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-xl font-bold text-[#1A1A1A] mb-1.5">
                   {title}
                 </h3>
                 <p className="text-sm text-[#999] leading-relaxed">

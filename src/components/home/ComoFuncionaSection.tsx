@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useAnimationSafety } from "@/hooks/useAnimationSafety";
 
 const STEPS = [
   {
@@ -25,13 +26,16 @@ const STEPS = [
 
 /** Seção "Como funciona" com 3 passos */
 export const ComoFuncionaSection = () => {
+  const forceVisible = useAnimationSafety(2000);
+
   return (
-    <section id="como-funciona" className="bg-light-card py-20 lg:py-24 px-8 lg:px-16">
+    <section id="como-funciona" className="bg-light-card py-16 md:py-20 px-8 lg:px-16">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
+          animate={forceVisible ? { opacity: 1, y: 0 } : undefined}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] mb-3"
         >
@@ -40,8 +44,9 @@ export const ComoFuncionaSection = () => {
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
+          animate={forceVisible ? { opacity: 1 } : undefined}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-sm md:text-base text-[#999] mb-12 md:mb-16"
         >
@@ -53,8 +58,9 @@ export const ComoFuncionaSection = () => {
             <motion.div
               key={step.number}
               initial={{ opacity: 0, y: 20 }}
+              animate={forceVisible ? { opacity: 1, y: 0 } : undefined}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0.1, margin: "-40px" }}
               transition={{ duration: 0.4, delay: i * 0.15 }}
               className="flex flex-col items-center"
             >

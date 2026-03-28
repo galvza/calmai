@@ -84,11 +84,6 @@ body {
   animation: marquee-reverse 30s linear infinite;
 }
 
-.marquee-container:hover .marquee-track,
-.marquee-container:hover .marquee-track-reverse {
-  animation-duration: 60s;
-}
-
 /* Section transitions */
 section {
   position: relative;

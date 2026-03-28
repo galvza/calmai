@@ -39,7 +39,7 @@ export const CtaSection = () => {
         >
           <h2 className="font-serif text-3xl md:text-4xl text-[#1A1A1A] leading-tight">
             De horas de pesquisa manual pra{" "}
-            <em className="italic text-[#1A1A1A]">minutos</em> de inteligência
+            <em className="italic font-bold text-[#1A1A1A]">minutos</em> de inteligência
             real.
           </h2>
           <p className="text-[14px] text-[#1A1A1A]/70 mt-4">

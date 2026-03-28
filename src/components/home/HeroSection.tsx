@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 import { Nav } from "@/components/layout/Nav";
 import { FirstTimeBanner } from "./FirstTimeBanner";
 import { HeroInput } from "./HeroInput";
-import { Marquee } from "./Marquee";
-
-/** Seção hero com headline, input, marquee e cantos arredondados */
+/** Seção hero com headline, input e cantos arredondados */
 export const HeroSection = () => {
   return (
     <section
@@ -49,8 +47,6 @@ export const HeroSection = () => {
           <HeroInput />
         </motion.div>
       </div>
-
-      <Marquee />
     </section>
   );
 };

@@ -1,16 +1,117 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Download, RefreshCw } from "lucide-react";
+import Link from "next/link";
+import { LupaiLogo } from "@/components/ui/LupaiLogo";
 import { MarketOverview } from "@/components/dashboard/MarketOverview";
 import { CompetitorCard } from "@/components/dashboard/CompetitorCard";
 import { SummaryCards } from "@/components/dashboard/SummaryCards";
 import { Recommendations } from "@/components/dashboard/Recommendations";
 import { Footer } from "@/components/layout/Footer";
 import { MOCK_ANALYSIS_RESULT } from "@/utils/mock-analysis";
+import type { AnalysisResult } from "@/types/analysis";
 
 /** Dashboard de resultados da análise */
 export const DashboardResultsClient = ({ id }: { id: string }) => {
-  const data = MOCK_ANALYSIS_RESULT;
+  const [data, setData] = useState<AnalysisResult | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // TODO Phase 9: Replace with real API call
+    // fetch(`/api/analysis/${id}`)
+    //   .then(res => res.json())
+    //   .then(setData)
+    //   .catch(err => setError(err.message))
+    //   .finally(() => setLoading(false));
+
+    // For now: simulate loading then show mock data
+    const timer = setTimeout(() => {
+      setData(MOCK_ANALYSIS_RESULT);
+      setLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-dark-bg flex items-center justify-center px-6">
+        <div className="w-full max-w-5xl">
+          <div className="flex justify-center mb-6">
+            <div className="animate-pulse">
+              <LupaiLogo size={40} variant="green" />
+            </div>
+          </div>
+          <p className="text-[#999] text-sm text-center mb-10">
+            Preparando seu relatório...
+          </p>
+          <div className="space-y-4">
+            <div className="bg-[#1A1A1A] rounded-xl h-32 animate-pulse" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-[#1A1A1A] rounded-xl h-28 animate-pulse" />
+              <div className="bg-[#1A1A1A] rounded-xl h-28 animate-pulse" />
+            </div>
+            <div className="bg-[#1A1A1A] rounded-xl h-24 animate-pulse" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-dark-bg flex items-center justify-center px-6">
+        <div className="text-center max-w-md">
+          <div className="flex justify-center mb-8">
+            <LupaiLogo size={40} variant="green" />
+          </div>
+          <h2 className="font-serif text-[22px] text-white mb-2">
+            Erro ao carregar resultados
+          </h2>
+          <p className="text-[14px] text-[#999] mb-8">{error}</p>
+          <div className="flex items-center justify-center gap-3">
+            <button
+              onClick={() => window.location.reload()}
+              className="bg-[#C8FF3C] text-[#0F0F0F] rounded-full px-6 py-3 font-medium text-[14px] hover:brightness-110 transition-all"
+            >
+              Tentar novamente
+            </button>
+            <Link
+              href="/"
+              className="text-[14px] text-[#999] hover:text-white transition-colors"
+            >
+              Voltar ao início
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="min-h-screen bg-dark-bg flex items-center justify-center px-6">
+        <div className="text-center max-w-md">
+          <div className="flex justify-center mb-8">
+            <LupaiLogo size={40} variant="green" />
+          </div>
+          <h2 className="font-serif text-[22px] text-white mb-2">
+            Nenhum resultado encontrado
+          </h2>
+          <p className="text-[14px] text-[#999] mb-8">
+            Esta análise pode ter expirado ou o ID é inválido.
+          </p>
+          <Link
+            href="/"
+            className="inline-block bg-[#C8FF3C] text-[#0F0F0F] rounded-full px-6 py-3 font-medium text-[14px] hover:brightness-110 transition-all"
+          >
+            Iniciar nova análise
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-dark-bg">
